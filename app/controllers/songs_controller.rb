@@ -42,8 +42,8 @@ get 'songs/:slug/edit' do
   post '/songs/:id' do
     @song = Song.find(params[:id])
     @song.update(params["song"])
-    if !params["song"]["name"].empty?
-      @song.artists << Artist.create(name: params["artist"]["name"])
+    if !params["song"]["artist"].empty?
+      @song.artists << Artist.create(name: params["song"]["artist"]["name"])
     end
     redirect to "songs/#{@song.id}"
 end
