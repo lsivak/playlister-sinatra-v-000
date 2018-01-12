@@ -41,8 +41,8 @@ get 'songs/:slug/edit' do
     @song = Song.find(params[:id])
     @song.update(params["song"])
     if !params["song"]["name"].empty?
-      @song.artists << Pet.create(name: params["pet"]["name"])
+      @song.artists << Artist.create(name: params["artist"]["name"])
     end
-    redirect to "owners/#{@owner.id}"
+    redirect to "songs/#{@song.id}"
 end
 end
