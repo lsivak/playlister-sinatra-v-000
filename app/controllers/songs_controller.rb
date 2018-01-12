@@ -18,7 +18,7 @@ end
 
 post '/songs' do
   @song = Song.create(name: params["name"])
-  artist = Artist.create(name: params["song"]["artist"]["name"])
+  @song.artist = Artist.find_or_create_by(name: params["Artist name"])
 
   @song.song_genres.create(name: params["song"]["song_genres"]["name"])
   @song.artist = artist
