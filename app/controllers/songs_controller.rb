@@ -33,8 +33,7 @@ get 'songs/:slug/edit' do
   patch '/songs/:slug' do
     @song = Song.find_slug(params[:slug])
     @song.update(params[:song])
-    if !params["song"]["artist"].empty?
-      @song.artists << Artist.create(name: params["song"]["artist"]["name"])
+    @song.artists = Artist.find_or_create(name: params[:artist][:name])
     end
     redirect to "songs/#{@song.id}"
 end
