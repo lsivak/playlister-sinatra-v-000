@@ -36,6 +36,6 @@ get 'songs/:slug/edit' do
     @song.artists = Artist.find_or_create(name: params[:artist][:name])
     @song.save
     end
-    redirect to "songs/#{@song.id}"
+    redirect to "songs/#{@song.slug}"
 end
 end
