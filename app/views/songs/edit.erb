@@ -14,15 +14,15 @@
   <br></br>
 
   <%Genre.all.each do |genre|%>
-    <input type="checkbox" name="song[song_genres][]" id="<%= song.id%>" value="<%=song.id%>" <%='checked' if @song.song_genres.include?(genre) %>><%=genre.name%></input>
+    <input type="checkbox" name="song[song_genres][]" id="<%= genre.id%>" value="<%=genre.id%>" <%='checked' if @song.song_genres.include?(genre) %>><%=genre.name%></input>
   <%end%>
 
   <br></br>
 
-  <label>and/or, create a new pet:</label>
+  <label>and/or, create a new Artist:</label>
   <br></br>
   <label>name:</label>
-    <input  type="text" name="pet[name]" id="pet_name"></input>
+    <input  type="text" name="artist[name]" id="artist_name"></input>
   <br></br>
-  <input type="submit" value="Update Owner">
+  <input type="submit" value="Update Song">
 </form>
