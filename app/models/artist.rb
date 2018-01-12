@@ -3,7 +3,7 @@ class Artist < ActiveRecord::Base
     has_many :genres, through: :songs
 
     def slug
-      Artist.name.downcase.gsub(" ","-")
+      name.downcase.gsub(" ","-")
 end
     def self.find_by_slug_method(slug)
     Artist.all.find{|artist| artist.slug == slug}
