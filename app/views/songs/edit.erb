@@ -1,6 +1,7 @@
 <h1>Update Song</h1>
 
-<form action="/songs/<%=@song.id%>" method="POST">
+<form action="/songs/<%=@song.id%>" method="Post">
+  <input id="hidden" type="hidden" name="_method" value="PATCH"
   <label>Name:</label>
 
   <br></br>
