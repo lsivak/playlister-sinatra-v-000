@@ -19,26 +19,18 @@ end
 post '/songs' do
   @song = Song.create(name: params["name"])
   @song.artist = Artist.find_or_create_by(name: params["Artist name"])
-
-  @song.song_genres.create(name: params["song"]["song_genres"]["name"])
-  @song.artist = artist
+  @song.song_genres_ids(name: params["genres"])
   @song.save
-
   flash[:message] = "Successfully created song."
 redirect to "/songs/#{@song.slug}"
 end
 
 get 'songs/:slug/edit' do
-    @songs = Song.find(params[:id])
+    @songs = Song.find_by_slug(params[:slug])
     erb :'/songs/edit'
   end
 
-  get '/songs/:id' do
-    @song = Song.find(params[:id])
-    erb :'/songs/show'
-  end
-
-  post '/songs/:id' do
+  patch '/songs/:slug' do
     @song = Song.find(params[:id])
     @song.update(params["song"])
     if !params["song"]["artist"].empty?
