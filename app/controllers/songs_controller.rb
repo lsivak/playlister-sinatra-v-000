@@ -17,7 +17,7 @@ class SongsController < ApplicationController
 end
 
 post '/songs' do
-  @song = Song.create(name: params["name"])
+  @song = Song.create(name: params["song_name"])
   @song.artist = Artist.find_or_create_by(name: params["Artist name"])
   @song.song_genres_ids(name: params["genres"])
   @song.save
